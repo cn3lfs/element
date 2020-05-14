@@ -684,6 +684,8 @@
             value.push(option.value);
           }
           this.$emit('input', value);
+          // add select event, see https://github.com/ElemeFE/element/issues/19127
+          this.$emit('select', option);
           this.emitChange(value);
           if (option.created) {
             this.query = '';
@@ -693,6 +695,8 @@
           if (this.filterable) this.$refs.input.focus();
         } else {
           this.$emit('input', option.value);
+          // add select event
+          this.$emit('select', option);
           this.emitChange(option.value);
           this.visible = false;
         }
